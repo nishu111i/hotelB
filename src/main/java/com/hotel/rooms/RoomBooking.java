@@ -1,10 +1,9 @@
 package com.hotel.rooms;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -12,16 +11,15 @@ import jakarta.persistence.Table;
 @Table(name = "room_booking")
 public class RoomBooking {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long booking_id;
+    private UUID booking_id;
 
     private Long room_id;
     private LocalDate from_date;
     private LocalDate to_date;
 
     // Getters and setters
-    public Long getBooking_id() { return booking_id; }
-    public void setBooking_id(Long booking_id) { this.booking_id = booking_id; }
+    public UUID getBooking_id() { return booking_id; }
+    public void setBooking_id(UUID booking_id) { this.booking_id = booking_id; }
 
     public Long getRoom_id() { return room_id; }
     public void setRoom_id(Long room_id) { this.room_id = room_id; }

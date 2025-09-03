@@ -1,6 +1,7 @@
 package com.hotel.rooms;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,7 @@ public class roomService {
 
     public RoomBooking addBooking(Long roomId, LocalDate fromDate, LocalDate toDate) {
         RoomBooking booking = new RoomBooking();
+        booking.setBooking_id(UUID.randomUUID()); // Generate UUID here
         booking.setRoom_id(roomId);
         booking.setFrom_date(fromDate);
         booking.setTo_date(toDate);
