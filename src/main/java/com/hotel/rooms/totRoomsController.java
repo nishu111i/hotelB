@@ -55,4 +55,19 @@ public class totRoomsController {
             return ResponseEntity.internalServerError().build(); 
         }
     }
+
+    @PostMapping("/bookRoom")
+    public ResponseEntity<RoomBooking> bookRoom(@RequestBody RoomBooking booking) {
+        try {
+            RoomBooking savedBooking = roomService.addBooking(
+                booking.getRoom_id(),
+                booking.getFrom_date(),
+                booking.getTo_date()
+            );
+            return ResponseEntity.ok(savedBooking);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
 }
