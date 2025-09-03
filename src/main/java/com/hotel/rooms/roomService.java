@@ -20,4 +20,8 @@ public class roomService {
         roomType.setPrice(price);
         return roomTypeRepository.save(roomType);
     }
+
+    public Iterable<RoomType> getAllRoomTypes() {
+        return roomTypeRepository.findAll();
+    }
 }

@@ -15,7 +15,7 @@ public class RoomType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long room_id;
 
-    @JsonProperty("room_name")
+    @JsonProperty("roomName")
     private String room_name;
     private Double price;
 

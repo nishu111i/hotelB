@@ -45,4 +45,14 @@ public class totRoomsController {
             return ResponseEntity.internalServerError().build();
         }
     }
+
+    @PostMapping("/getRoomTypes")
+    public ResponseEntity<Iterable<RoomType>> getRoomTypes() {
+        try {
+            Iterable<RoomType> roomTypes = roomService.getAllRoomTypes();
+            return ResponseEntity.ok(roomTypes);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build(); 
+        }
+    }
 }
