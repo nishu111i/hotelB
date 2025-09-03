@@ -1,6 +1,7 @@
 package com.hotel.rooms;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +15,7 @@ public class RoomType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long room_id;
 
-    @JsonProperty("roomName")
+    @JsonProperty("room_name")
     private String room_name;
     private Double price;
 
@@ -26,5 +27,6 @@ public class RoomType {
     public void setRoomName(String room_name) { this.room_name = room_name; }
 
     public Double getPrice() { return price; }
-    public void setPrice(Double price) { this.price = price; }
+    public void setPrice(Double price) { this.price = price; 
+    }
 }
