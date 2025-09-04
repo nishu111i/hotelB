@@ -32,11 +32,28 @@ public class roomService {
     }
 
     public RoomBooking addBooking(Long roomId, LocalDate fromDate, LocalDate toDate) {
-        RoomBooking booking = new RoomBooking();
-        booking.setBooking_id(UUID.randomUUID()); // Generate UUID here
-        booking.setRoom_id(roomId);
-        booking.setFrom_date(fromDate);
-        booking.setTo_date(toDate);
-        return roomBookingRepository.save(booking);
+        totRooms rooms = new totRooms();
+
+            RoomBooking booking = new RoomBooking();
+            booking.setBooking_id(UUID.randomUUID()); // Generate UUID here
+            booking.setRoom_id(roomId);
+            booking.setFrom_date(fromDate);
+            booking.setTo_date(toDate);
+
+            // Calculate total booking days
+            long totalBookingDays = java.time.temporal.ChronoUnit.DAYS.between(fromDate, toDate);
+            System.out.println("Total booking days: " + totalBookingDays);
+        int totRoom = rooms.getAvailableRooms(); // Get available rooms
+        if (totRoom > 1) {
+            RoomBooking savedBooking = roomBookingRepository.save(booking);
+
+            // After successful save, increment roominuse
+            rooms.incrementRoomInUse();
+
+            return savedBooking;
+        } else {
+            // Not enough rooms available
+            return null;
+        }
     }
 }
